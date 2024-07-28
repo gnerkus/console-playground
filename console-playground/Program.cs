@@ -9,5 +9,5 @@ namespace Main
         {
             var benchmarkSummary = BenchmarkRunner.Run<LinqQueryBenchmark>();
         }
-    }    
+    }
 }
