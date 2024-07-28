@@ -1,3 +1,13 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using BenchmarkDotNet.Running;
+using Benchmarks;
 
-Console.WriteLine("Hello, World!");
+namespace Main
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var benchmarkSummary = BenchmarkRunner.Run<LinqQueryBenchmark>();
+        }
+    }    
+}
