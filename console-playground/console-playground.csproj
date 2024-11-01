@@ -10,6 +10,7 @@
 
     <ItemGroup>
         <PackageReference Include="BenchmarkDotNet" Version="0.13.12"/>
+        <PackageReference Include="NLua" Version="1.7.3" />
     </ItemGroup>
 
 </Project>
