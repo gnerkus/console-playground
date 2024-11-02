@@ -19,6 +19,10 @@ namespace Main
             // Lua testing
             Console.WriteLine("LUA");
             Console.WriteLine(NLuaParser.SimpleMathParse());
+            
+            // Func testing
+            Console.WriteLine("FUNC");
+            Console.WriteLine(JsonSerializer.Serialize(TestingFuncs.SimpleFunc()));
         }
     }
 }

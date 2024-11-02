@@ -22,5 +22,10 @@ namespace Main.parsers
             var res = (int)(long)scriptFunc.Call(3, 5).First();
             return res;
         }
+
+        public static void SimpleObjectParse()
+        {
+	        
+        }
     }
 }
