@@ -1,6 +1,7 @@
-﻿using BenchmarkDotNet.Running;
+﻿using System.Text.Json;
+using BenchmarkDotNet.Running;
 using Benchmarks;
-using NLua;
+using Main.parsers;
 
 namespace Main
 {
@@ -8,22 +9,16 @@ namespace Main
     {
         public static void Main(string[] args)
         {
-            var benchmarkSummary = BenchmarkRunner.Run<LinqQueryBenchmark>();
-            var state = new Lua();
-            state.DoString("""
-                           
-                           		function ScriptFunc (val1, val2)
-                           			if val1 > val2 then
-                           				return val1 + 1
-                           			else
-                           				return val2 - 1
-                           			end
-                           		end
-                           		
-                           """);
-            var scriptFunc = state["ScriptFunc"] as LuaFunction;
-            var res = (int)(long)scriptFunc.Call(3, 5).First();
-            Console.WriteLine(res);
+            // Benchmarks
+            // var benchmarkSummary = BenchmarkRunner.Run<LinqQueryBenchmark>();
+            
+            // CSV testing
+            Console.WriteLine("CSV");
+            Console.WriteLine(JsonSerializer.Serialize(CSVHelperParser.SimpleParse("test.csv")));
+            
+            // Lua testing
+            Console.WriteLine("LUA");
+            Console.WriteLine(NLuaParser.SimpleMathParse());
         }
     }
 }
