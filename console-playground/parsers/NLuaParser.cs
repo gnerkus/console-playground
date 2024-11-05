@@ -15,8 +15,7 @@ namespace Main.parsers
                            		
                            """);
             var scriptFunc = state["ScriptFunc"] as LuaFunction;
-            var res = (int)(long)scriptFunc.Call(new TestNum() { First = 3, Second = 4}).First();
-            // var res2 = scriptFunc.Call();
+            var res = (int)(long)scriptFunc.Call(new TestNum() { First = "3", Second = 4}).First();
             return res;
         }
 
