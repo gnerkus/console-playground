@@ -7,7 +7,7 @@ namespace Main
 {
     public record TestNum
     {
-        public int First { get; set; }
+        public string First { get; set; }
         public int Second { get; set; }
     }
     public class Program
@@ -18,8 +18,11 @@ namespace Main
             // var benchmarkSummary = BenchmarkRunner.Run<LinqQueryBenchmark>();
             
             // CSV testing
-            Console.WriteLine("CSV");
-            Console.WriteLine(JsonSerializer.Serialize(CSVHelperParser.SimpleParse("test.csv")));
+            // Console.WriteLine("CSV | Base");
+            // Console.WriteLine(JsonSerializer.Serialize(CSVHelperParser.SimpleParse("test.csv")));
+            Console.WriteLine("CSV | Dynamic");
+            Console.WriteLine(JsonSerializer.Serialize(CSVHelperParser.DynamicParse("test.csv")));
+
             
             // Lua testing
             Console.WriteLine("LUA");
@@ -29,12 +32,12 @@ namespace Main
             {
                 new ()
                 {
-                    First = 1,
+                    First = "1",
                     Second = 1
                 },
                 new ()
                 {
-                    First = 2,
+                    First = "2",
                     Second = 2
                 }
             };
@@ -42,8 +45,8 @@ namespace Main
             Console.WriteLine(JsonSerializer.Serialize(sums));
             
             // Func testing
-            Console.WriteLine("FUNC");
-            Console.WriteLine(JsonSerializer.Serialize(TestingFuncs.SimpleFunc()));
+            // Console.WriteLine("FUNC");
+            // Console.WriteLine(JsonSerializer.Serialize(TestingFuncs.SimpleFunc()));
         }
     }
 }
