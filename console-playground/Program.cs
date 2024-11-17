@@ -47,6 +47,11 @@ namespace Main
             // Func testing
             // Console.WriteLine("FUNC");
             // Console.WriteLine(JsonSerializer.Serialize(TestingFuncs.SimpleFunc()));
+            
+            // JSON deserialization testing
+            var results = DynamicJsonDeserializer.TestDeserialize();
+            Console.WriteLine("JSON");
+            Console.WriteLine(results[2]);
         }
     }
 }
