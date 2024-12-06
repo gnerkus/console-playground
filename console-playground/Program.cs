@@ -55,8 +55,8 @@ namespace Main
             //Console.WriteLine(results[2]);
             
             // REDIS testing
-            // var redisTest = new RedisTest();
-            // redisTest.AddScores();
+            //var redisTest = new RedisTest();
+            //redisTest.AddScores();
         }
     }
 }

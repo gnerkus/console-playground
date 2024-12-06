@@ -15,7 +15,15 @@ namespace Main.redis
         
         public RedisTest()
         {
-            var redis = ConnectionMultiplexer.Connect("localhost");
+            var ctx = new ConfigurationOptions
+            {
+                EndPoints =
+                {
+                    { "localhost", 6379 }
+                },
+            };
+            
+            var redis = ConnectionMultiplexer.Connect(ctx);
             _db = redis.GetDatabase(10);
         }
 
