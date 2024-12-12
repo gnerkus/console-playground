@@ -1,6 +1,7 @@
 ﻿using System.Text.Json;
 using BenchmarkDotNet.Running;
 using Benchmarks;
+using Main.meshio;
 using Main.parsers;
 using Main.redis;
 
@@ -57,6 +58,9 @@ namespace Main
             // REDIS testing
             //var redisTest = new RedisTest();
             //redisTest.AddScores();
+            
+            // 3D file parsing
+            FileProcessor3D.ExamineFile(@"C:\Users\ifean\Downloads\bulldozer.fbx");
         }
     }
 }
