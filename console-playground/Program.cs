@@ -12,6 +12,11 @@ namespace Main
         public string First { get; set; }
         public int Second { get; set; }
     }
+
+    public class AppConfig
+    {
+        public string fbxFile { get; init; }
+    }
     public class Program
     {
         public static void Main(string[] args)
@@ -60,7 +65,8 @@ namespace Main
             //redisTest.AddScores();
             
             // 3D file parsing
-            FileProcessor3D.ExamineFile(@"C:\Users\ifean\Downloads\bulldozer.fbx");
+            var config = JsonSerializer.Deserialize<AppConfig>(File.ReadAllText("config.json"));
+            FileProcessor3D.ExamineFile(config.fbxFile);
         }
     }
 }

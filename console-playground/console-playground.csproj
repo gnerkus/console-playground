@@ -21,4 +21,8 @@
       <None Include="bin\Release\net8.0\test.csv" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="bin\Release\net8.0\config.json" />
+    </ItemGroup>
+
 </Project>
