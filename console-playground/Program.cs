@@ -16,6 +16,7 @@ namespace Main
     public class AppConfig
     {
         public string fbxFile { get; init; }
+        public string fbxFileSerialized { get; init; }
     }
     public class Program
     {
@@ -66,7 +67,9 @@ namespace Main
             
             // 3D file parsing
             var config = JsonSerializer.Deserialize<AppConfig>(File.ReadAllText("config.json"));
-            FileProcessor3D.ExamineFile(config.fbxFile);
+            var fileProcessor = new FileProcessor3D();
+            var geometries = fileProcessor.ExamineFbxFile(config.fbxFile);
+            File.WriteAllText(config.fbxFileSerialized, geometries);
         }
     }
 }

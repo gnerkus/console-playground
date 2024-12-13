@@ -1,4 +1,6 @@
-﻿using MeshIO;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
+using MeshIO;
 using MeshIO.FBX;
 using MeshIO.Core;
 using MeshIO.Entities.Geometries;
@@ -33,16 +35,19 @@ namespace Main.meshio
         }
     }
     
-    public static class FileProcessor3D
+    public class FileProcessor3D
     {
-        public static FbxRootNode ParseFbx(string file)
+        private JsonSerializerOptions _options = new (){
+            ReferenceHandler = ReferenceHandler.Preserve
+        };
+        public FbxRootNode ParseFbx(string file)
         {
             using var reader = new FbxReader(file);
             var node = reader.Parse();
             return node;
         }
-        
-        public static Scene ReadFbx(string file)
+
+        private Scene ReadFbx(string file)
         {
             using var reader = new FbxReader(file);
             reader.OnNotification += NotificationHelper.LogConsoleNotification;
@@ -50,27 +55,16 @@ namespace Main.meshio
             return scene;
         }
 
-        public static IEnumerable<Geometry> GetAllGeometryInScene(Scene scene)
+        private string GetAllGeometryInScene(Scene scene)
         {
-            foreach (var node in scene.RootNode.Nodes)
-            {
-                if (node.Parent is Geometry geometry)
-                {
-                    yield return geometry;
-                }
-
-                if (node.Nodes.Count <= 0) continue;
-                foreach (var nestedNode in node.Nodes)
-                {
-                    Console.WriteLine(nestedNode);
-                }
-            }
+            return JsonSerializer.Serialize(scene, _options);
         }
 
-        public static IEnumerable<Geometry> ExamineFile(string filePath)
+        public string ExamineFbxFile(string filePath)
         {
             var scene = ReadFbx(filePath);
-            return GetAllGeometryInScene(scene);
+            var geometries = GetAllGeometryInScene(scene);
+            return geometries;
         }
     }
 }
