@@ -19,6 +19,7 @@ namespace Main
         public string fbxFile { get; init; }
         public string fbxFileSerialized { get; init; }
         public string stlFile { get; init; }
+        public string stlFileSerialized { get; init; }
     }
     public class Program
     {
@@ -76,8 +77,9 @@ namespace Main
             // 3D file parsing with MeshLib
             var config = JsonSerializer.Deserialize<AppConfig>(File.ReadAllText("config.json"));
             var fileLoader = new FileImporter();
-            var mesh = fileLoader.ExamineFbxFile(config.stlFile);
-            Console.WriteLine(mesh);
+            var mesh = fileLoader.ExamineStlFile(config.stlFile);
+            File.WriteAllText(config.stlFileSerialized, mesh);
+            // Console.WriteLine(mesh);
         }
     }
 }
