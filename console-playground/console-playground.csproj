@@ -13,6 +13,7 @@
         <PackageReference Include="CsvHelper" Version="33.0.1" />
         <PackageReference Include="MeshIO" Version="2.1.0-alpha" />
         <PackageReference Include="MeshIO.FBX" Version="2.1.0-alpha" />
+        <PackageReference Include="MeshLib" Version="3.0.1.216" />
         <PackageReference Include="NLua" Version="1.7.3" />
         <PackageReference Include="StackExchange.Redis" Version="2.8.22" />
     </ItemGroup>

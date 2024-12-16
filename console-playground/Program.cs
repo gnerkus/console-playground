@@ -2,6 +2,7 @@
 using BenchmarkDotNet.Running;
 using Benchmarks;
 using Main.meshio;
+using Main.meshlib;
 using Main.parsers;
 using Main.redis;
 
@@ -17,6 +18,7 @@ namespace Main
     {
         public string fbxFile { get; init; }
         public string fbxFileSerialized { get; init; }
+        public string stlFile { get; init; }
     }
     public class Program
     {
@@ -65,11 +67,17 @@ namespace Main
             //var redisTest = new RedisTest();
             //redisTest.AddScores();
             
-            // 3D file parsing
+            // 3D file parsing with MeshIO
+            // var config = JsonSerializer.Deserialize<AppConfig>(File.ReadAllText("config.json"));
+            // var fileProcessor = new FileProcessor3D();
+            // var geometries = fileProcessor.ExamineFbxFile(config.fbxFile);
+            // File.WriteAllText(config.fbxFileSerialized, geometries);
+            
+            // 3D file parsing with MeshLib
             var config = JsonSerializer.Deserialize<AppConfig>(File.ReadAllText("config.json"));
-            var fileProcessor = new FileProcessor3D();
-            var geometries = fileProcessor.ExamineFbxFile(config.fbxFile);
-            File.WriteAllText(config.fbxFileSerialized, geometries);
+            var fileLoader = new FileImporter();
+            var mesh = fileLoader.ExamineFbxFile(config.stlFile);
+            Console.WriteLine(mesh);
         }
     }
 }
