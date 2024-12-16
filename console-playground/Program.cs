@@ -75,11 +75,10 @@ namespace Main
             // File.WriteAllText(config.fbxFileSerialized, geometries);
             
             // 3D file parsing with MeshLib
-            var config = JsonSerializer.Deserialize<AppConfig>(File.ReadAllText("config.json"));
-            var fileLoader = new FileImporter();
-            var mesh = fileLoader.ExamineStlFile(config.stlFile);
-            File.WriteAllText(config.stlFileSerialized, mesh);
-            // Console.WriteLine(mesh);
+            // var config = JsonSerializer.Deserialize<AppConfig>(File.ReadAllText("config.json"));
+            // var fileLoader = new FileImporter();
+            // var mesh = fileLoader.ExamineStlFile(config.stlFile);
+            // File.WriteAllText(config.stlFileSerialized, mesh);
         }
     }
 }
